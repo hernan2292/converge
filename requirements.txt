@@ -1,0 +1,7 @@
+# vLLM Cluster Requirements
+# Instalar en WSL Ubuntu con: pip install -r requirements.txt
+
+vllm>=0.11.0
+ray>=2.9.0
+torch>=2.1.0
+openai>=1.0.0

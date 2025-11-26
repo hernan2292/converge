@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/herna/.ollama/models/blobs/**)",
+      "Bash(cmake:*)",
+      "Bash(make:*)",
+      "Bash(curl:*)",
+      "Read(//c/Users/herna/**)",
+      "Bash(python test:*)",
+      "Bash(python:*)",
+      "Bash(timeout:*)",
+      "Bash(nvidia-smi:*)",
+      "Bash(setup_vllm_wsl.bat)",
+      "Bash(cmd /c:*)",
+      "Bash(wsl:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

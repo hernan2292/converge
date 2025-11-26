@@ -1,0 +1,76 @@
+========================================
+QUICKSTART - vLLM Distributed Cluster
+========================================
+
+INSTALACIÓN (PRIMERA VEZ):
+--------------------------
+1. Doble click en: install.bat
+   (Esperar 10-15 minutos)
+
+INICIAR MASTER:
+---------------
+2. Doble click en: start_master.bat
+
+CONECTAR WORKER (OPCIONAL):
+---------------------------
+3. En otra máquina/terminal:
+   wsl -d Ubuntu
+   cd /mnt/c/Users/herna/OneDrive/proyects/converge
+   ./start_vllm_worker.sh <IP_MASTER> 6379
+
+PROBAR:
+-------
+4. En WSL:
+   wsl -d Ubuntu
+   cd ~/vllm_workspace
+   source vllm_env/bin/activate
+   pip install openai rich
+   python /mnt/c/Users/herna/OneDrive/proyects/converge/test_vllm_simple.py
+
+USAR INTERACTIVO:
+-----------------
+5. python /mnt/c/Users/herna/OneDrive/proyects/converge/vibe_vllm.py
+
+ENDPOINTS:
+----------
+- API vLLM: http://localhost:8000
+- Dashboard Ray: http://localhost:8265
+
+DETENER:
+--------
+wsl -d Ubuntu
+cd /mnt/c/Users/herna/OneDrive/proyects/converge
+./stop_vllm.sh
+
+========================================
+EJEMPLO CURL:
+========================================
+
+curl http://localhost:8000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "facebook/opt-125m",
+    "prompt": "Hello, my name is",
+    "max_tokens": 50
+  }'
+
+========================================
+EJEMPLO PYTHON:
+========================================
+
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="EMPTY",
+    base_url="http://localhost:8000/v1"
+)
+
+response = client.completions.create(
+    model="facebook/opt-125m",
+    prompt="Once upon a time",
+    max_tokens=50
+)
+
+print(response.choices[0].text)
+
+========================================
